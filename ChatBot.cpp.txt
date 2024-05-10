@@ -1,0 +1,118 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class ChatBot
+{
+	public:
+		
+		map<string ,string>data;
+		string question ;
+		string answer ;
+		bool gotans ;
+		bool getques ;
+		ChatBot()
+		{
+			data["hello"] = "Hey! How can I help you?";
+			data["hi"] = "Hey! How can I help you?";
+			data["yoo"] = "Hey! How can I help you?";
+			data["hey"] = "Hey! How can I help you?";
+			
+			data["how are you"] = "I am machine I am always Good. any queries ? ";
+			data["how's you"] = "I am machine I am always Good. any queries ? ";
+			
+			data["pict"] = "https://pict.edu/";
+			data["lab"] = "https://pict.edu/about_us/";
+			data["faculty"] = "https://pict.edu/pdf/footer/Staff%20Manual-Feb-2023.pdf";
+			data["comp"] = "https://pict.edu/CE-dept/";
+			data["entc"] = "https://pict.edu/";
+			data["placements"] = "https://pict.edu/placement/";
+			data["sports"] = "https://pict.edu/sport/"; 
+			
+			question = "";
+			answer = "";
+			gotans = 0 ;
+		}
+		
+		void take_question();
+		void give_answer();
+		void perform();
+};
+void ChatBot::take_question()
+{
+	string q;
+	getline(cin ,q);
+	
+	for (char &c : q) {
+        c = std::tolower(c);
+    }
+	question = q;
+	if(question != "")
+	{
+		getques = 1;
+		gotans = 0;
+	}
+}
+
+void ChatBot::give_answer()
+{
+	if(data.find(question) != data.end())
+	{
+		answer = data[question];
+		gotans = 1;
+		return ;
+	}
+	
+	vector<string>v;
+	
+	istringstream ss(question);
+ 
+    string word; 
+    
+    while (ss >> word) 
+    {
+        v.push_back(word) ;
+    }
+    
+    for(string word : v)
+    {
+    	if(data.find(word) != data.end()){
+    		answer = data[word];
+    		gotans = 1;
+    		getques = 0;
+		}
+	}
+
+}
+
+void ChatBot::perform()
+{
+	cout<<"How can I help you?"<<endl;
+	gotans = 0;
+	
+	while(true){
+		
+		take_question();
+		if(getques)
+		{
+			give_answer();
+			if(gotans){
+				cout<<answer<<endl;
+				cout<<"any further question ?"<<endl;
+			}
+			else
+			{
+				cout<<"I didn't get that. Can you say it again?"<<endl;
+			}
+		}
+		else
+		{
+			cout<<"How can I help you?"<<endl;
+		}
+	}
+}
+
+int main()
+{
+	ChatBot bot;
+	bot.perform();
+}

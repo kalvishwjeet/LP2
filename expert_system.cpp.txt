@@ -1,0 +1,219 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Hospitals_and_medical_facilities
+{
+	public:
+		map<int ,string>dignosis ;
+		map<int ,string>questions ;
+		Hospitals_and_medical_facilities()
+		{
+			dignosis[0] = "You have allergies" ;
+			dignosis[1] = "You have fever" ;
+			dignosis[2] = "You have cold" ;
+			dignosis[3] = "You have strep throat" ;
+			dignosis[4] = "You have food poisoning" ;
+			dignosis[5] = "You have appendicitis" ;
+			dignosis[6] = "You dont'n have allergies" ;
+			dignosis[7] = "You dont'n have fever" ;
+			dignosis[8] = "You dont'n have cold" ;
+			dignosis[9] = "You dont'n have strep throat" ;
+			dignosis[10] = "You dont'n have food poisoning" ;
+			dignosis[11] = "You dont'n have appendicitis" ;
+			dignosis[10] = "You have flu " ;
+			dignosis[11] = "You dont'n have flu" ;
+			
+			
+			
+			questions[0] = "Do you experience any itching or swelling?" ;
+			questions[1] = "Do you have red, watery eyes?" ;
+			questions[2] = "Do you have a temperature above 37.5°C?" ;
+			questions[3] = "Do you experience chills?" ;
+			questions[4] = "Do you have a runny or stuffy nose?" ;
+			questions[5] = "Are you sneezing frequently?" ;
+			questions[6] = "Do you have body aches?" ;
+			questions[7] = "Do you feel tired or fatigued?" ;
+			questions[8] = "Do you have a temperature above 38°C?" ;
+			questions[9] = "Do you have a sore throat?" ;
+			questions[10] = "Are your tonsils swollen?" ;
+			questions[11] = "Do you feel nauseous?" ;
+			questions[12] = "Have you been vomiting?" ;
+			questions[13] = "Do you have diarrhea?" ;
+			questions[14] = "Do you have severe abdominal pain?" ;
+			questions[15] = "Have you lost your appetite?" ;
+			
+		}
+		
+		bool diagnose_allergies() ;
+		bool diagnose_fever() ;
+		bool diagnose_cold() ;
+		bool diagnose_flu() ;
+		bool  diagnose_strep_throat() ;
+		bool diagnose_food_poisoning() ;
+		bool diagnose_appendicitis() ;
+		
+		bool ask_2question(int ,int);
+		bool ask_3question(int ,int ,int);
+		
+		void show_diagnosis(int);
+		
+		void chat_with_user();
+};
+
+bool Hospitals_and_medical_facilities::ask_2question(int a ,int b)
+{
+	bool f1 ,f2 ;
+	
+	string s ;
+	
+	cout<<questions[a]<<"Yes or No";
+	cin>>s ;
+	s == "Yes" ? f1 = 1 : f1 = 0; 
+	cout<<questions[b]<<"Yes or No";
+	cin>>s ;
+	s == "Yes" ? f2 = 1 : f2 = 0; 
+	
+	return (f1|f2);
+}
+
+bool Hospitals_and_medical_facilities::ask_3question(int a ,int b ,int c)
+{
+	bool f1 ,f2 ,f3;
+	
+	string s ;
+	
+	cout<<questions[a]<<"Yes or No";
+	cin>>s ;
+	s == "Yes" ? f1 = 1 : f1 = 0; 
+	cout<<questions[b]<<"Yes or No";
+	cin>>s ;
+	s == "Yes" ? f2 = 1 : f2 = 0; 
+	cout<<questions[c]<<"Yes or No";
+	cin>>s ;
+	s == "Yes" ? f3 = 1 : f3 = 0; 
+	
+	
+	return (f1|f2|f3);
+}
+bool Hospitals_and_medical_facilities::diagnose_allergies()
+{
+	return ask_2question( 0 ,1);
+}
+
+bool Hospitals_and_medical_facilities::diagnose_fever()
+{
+	return ask_2question( 2 ,3);
+}
+
+bool Hospitals_and_medical_facilities::diagnose_cold()
+{
+	return ask_2question( 4 ,5);
+}
+
+bool Hospitals_and_medical_facilities::diagnose_flu()
+{
+	return ask_3question( 6 ,7 ,8);
+}
+
+bool Hospitals_and_medical_facilities::diagnose_strep_throat()
+{
+	return ask_2question( 9 ,10);
+}
+
+bool Hospitals_and_medical_facilities::diagnose_food_poisoning()
+{
+	return ask_3question(11 ,12 , 13);
+}
+
+bool Hospitals_and_medical_facilities::diagnose_appendicitis()
+{
+	return ask_2question( 14 ,15);
+}
+void Hospitals_and_medical_facilities::show_diagnosis(int a)
+{
+	cout<<dignosis[a]<<endl;
+}
+void Hospitals_and_medical_facilities::chat_with_user()
+{
+	//1 , 6
+	if(diagnose_allergies())
+	{
+		show_diagnosis(0);
+	}
+	else
+	{
+		show_diagnosis(6);
+	}
+	
+	//1 , 7
+	
+	if(diagnose_fever())
+	{
+		show_diagnosis(1);
+	}
+	else
+	{
+		show_diagnosis(7);
+	}
+	
+	//2, 8
+	
+	if(diagnose_cold())
+	{
+		show_diagnosis(2);
+	}
+	else
+	{
+		show_diagnosis(8);
+	}
+	
+	
+	
+	//3 ,9
+	
+	
+	if(diagnose_strep_throat())
+	{
+		show_diagnosis(3);
+	}
+	else
+	{
+		show_diagnosis(9);
+	}
+	
+	if(diagnose_food_poisoning())
+	{
+		show_diagnosis(4);
+	}
+	else
+	{
+		show_diagnosis(10);
+	}
+	
+	if(diagnose_appendicitis())
+	{
+		show_diagnosis(5);
+	}
+	else
+	{
+		show_diagnosis(11);
+	}
+	
+	if(diagnose_appendicitis())
+	{
+		show_diagnosis(12);
+	}
+	else
+	{
+		show_diagnosis(13);
+	}
+}
+
+int main()
+{
+	Hospitals_and_medical_facilities system ;
+	
+	system.chat_with_user();
+}
+
+
