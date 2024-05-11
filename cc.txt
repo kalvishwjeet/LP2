@@ -1,0 +1,66 @@
+public class GreatestNum {
+    public Decimal Greatest(Decimal a, Decimal b, Decimal c){
+        Decimal ans = a;
+        if(b > ans){
+            ans = b;
+        }
+        if(c > ans){
+            ans = c;
+        }
+        return ans;
+    }
+}
+
+public class GenStuMarks {
+    public Decimal percent(Decimal a, Decimal b, Decimal c, Decimal d, Decimal e){
+        return (a+b+c+d+e)/5;
+    }
+    public Decimal total(Decimal a, Decimal b, Decimal c, Decimal d, Decimal e){
+        return (a+b+c+d+e);
+    }
+}
+
+public class BasicCal {
+    public Decimal Add(Decimal a, Decimal b){
+        return (a+b);
+    }
+    public Decimal Sub(Decimal a, Decimal b){
+        return (a-b);
+    }
+    public Decimal Product(Decimal a, Decimal b){
+        return (a*b);
+    }
+    public Decimal Divide(Decimal a, Decimal b){
+        return (a/b);
+    }
+}
+
+public class CelToFar {
+    public Decimal CelFar(Decimal a){
+        return ((a * 9)/5)+32;
+    }
+    public Decimal FarCel(Decimal a){
+        return ((a-32)*5)/9;
+    }
+}
+
+public class ElecBill {
+    public Decimal Bill(Decimal a){
+        return (a*4.56);
+    }
+}
+
+public class CurrCon {
+    public Decimal UsdRupee(Decimal a){
+        return a*83.38;
+	}
+    public Decimal RupeeUsd(Decimal a){
+        return a/83.38;
+	}
+    public Decimal RupeeYen(Decimal a){
+        return a/1.84;
+    }
+    public Decimal YenRupee(Decimal a){
+        return a*1.84;
+	}
+}
